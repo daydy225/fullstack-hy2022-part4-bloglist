@@ -3,6 +3,7 @@ const app = express()
 const cors = require('cors')
 const mongoose = require('mongoose')
 const { MONGODB_URI } = require('./config/config')
+const { info } = require('./config/logger')
 
 const blogSchema = new mongoose.Schema({
   title: String,
@@ -13,7 +14,10 @@ const blogSchema = new mongoose.Schema({
 
 const Blog = mongoose.model('Blog', blogSchema)
 
-mongoose.connect(MONGODB_URI)
+mongoose
+  .connect(MONGODB_URI)
+  .then(result => info('connected to MongoDB'))
+  .catch(err => error('error connecting to MongoDB', err.message))
 
 app.use(cors())
 app.use(express.json())
