@@ -2,10 +2,10 @@ const express = require('express')
 const app = express()
 const cors = require('cors')
 const mongoose = require('mongoose')
-const { MONGODB_URI } = require('./config/config')
-const { info } = require('./config/logger')
+const { MONGODB_URI } = require('./utils/config')
+const { info } = require('./utils/logger')
 const blogsRouter = require('./controllers/blogs')
-const { unknownEndpoint } = require('./config/middleware')
+const { unknownEndpoint } = require('./utils/middleware')
 
 mongoose
   .connect(MONGODB_URI)
