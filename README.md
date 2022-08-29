@@ -15,3 +15,4 @@ define a dummy function that receives an array of blog posts as a parameter and 
 And testing this function.
 
 
+## blog list step 4: helper function and unit test, step2
