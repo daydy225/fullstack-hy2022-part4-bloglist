@@ -23,3 +23,7 @@ Define a new totalLikes function that receives a list of blog posts as a paramet
 ## blog list step 5: helper function and unit test, step 3
 
 Define a new favoriteBlog function that receives a list of blogs as a parameter. The function finds out which blog has most likes. If there are many top favorites, it is enough to return one of them.
+
+## blog list step 6: helper function and unit test, step 4
+
+Define a function called mostBlogs that receives an array of blogs as a parameter. The function returns the author who has the largest amount of blogs
