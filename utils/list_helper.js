@@ -41,20 +41,37 @@ return  favoriteBlog
 
 const mostBlogs = (blogs) => {
   
- let blogOccurences = _.entries(_.countBy(blogs.map(blog => blog.author))).map(([author, blogs])=> ({author, blogs}))
+ let blogOccurences = _.entries(_.countBy(blogs, 'author')).map(([author, blogs])=> ({author, blogs}))
 
- let blog_index = 0
-    for (let i = 0; i < blogOccurences.length; i++) {
-       if (blogOccurences[i].blogs > blogOccurences[blog_index].blogs) {
-         blog_index = i
-       }    
-    }
-
- const mostBlog = blogOccurences[blog_index]
+ const mostBlog = _.maxBy(blogOccurences, 'blogs')
 
  return mostBlog
 
 }
+
+
+const mostLikes = blogs => {
+
+  const groupByAuthor =  _.groupBy(blogs, 'author')
+
+  let authorAndSumOfLikes =  []
+
+  _.forIn(groupByAuthor, (value, author)=> {
+     let obj = {
+      author: author,
+      likes: value.map(val=> val.likes).reduce((sum, num)=> sum + num) 
+    }
+    return authorAndSumOfLikes.push(obj)
+  })
+ 
+ largestNumOfLikes = _.maxBy(authorAndSumOfLikes, 'likes') 
+    
+
+
+ 
+  return largestNumOfLikes
+
+} 
 
 
 
@@ -62,5 +79,6 @@ module.exports = {
     dummy,
     totalLikes,
     favoritesBlog,
-    mostBlogs
+    mostBlogs,
+    mostLikes
 }
