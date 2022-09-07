@@ -31,3 +31,9 @@ Define a function called mostBlogs that receives an array of blogs as a paramete
 ## blog list step 7: helper function and unit test, step 5
 
 Define a function called mostLikes that receives an array of blogs as its parameter. The function returns the author, whose blog posts have the largest amount of likes.
+
+# Blog list tests
+
+## step 1
+
+Use the supertest package for writing a test that makes an HTTP GET request to the /api/blogs url. Verify that the blog list application returns the correct amount of blog posts in the JSON format.
