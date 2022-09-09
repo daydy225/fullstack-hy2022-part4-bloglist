@@ -37,3 +37,7 @@ Define a function called mostLikes that receives an array of blogs as its parame
 ## step 1
 
 Use the supertest package for writing a test that makes an HTTP GET request to the /api/blogs url. Verify that the blog list application returns the correct amount of blog posts in the JSON format.
+
+## step 1
+
+Write a test that verifies that the unique identifier property of the blog posts is named id.
