@@ -74,6 +74,18 @@ test('likes default to 0 if missing', async () => {
   expect(LikeDefaultToZero.likes).toBe(0)
 })
 
+test('blog without title or author are not added', async () => {
+  const newBlog = {
+    url: 'http://blog.cleancoder.com/uncle-bob/2016/05/01/TypeWars.html',
+  }
+
+  await api.post('/api/blogs').send(newBlog).expect(400)
+
+  const blogsAtEnd = await helper.blogsInDB()
+
+  expect(blogsAtEnd).toHaveLength(helper.initialBlogs.length)
+})
+
 afterAll(() => {
   mongoose.connection.close()
 })

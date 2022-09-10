@@ -5,7 +5,7 @@ const mongoose = require('mongoose')
 const { MONGODB_URI } = require('./utils/config')
 const { info, error } = require('./utils/logger')
 const blogsRouter = require('./controllers/blogs')
-const { unknownEndpoint } = require('./utils/middleware')
+const { unknownEndpoint, errorHandler } = require('./utils/middleware')
 
 mongoose
   .connect(MONGODB_URI)
@@ -18,5 +18,6 @@ app.use(express.json())
 app.use('/api/blogs', blogsRouter)
 
 app.use(unknownEndpoint)
+app.use(errorHandler)
 
 module.exports = app
