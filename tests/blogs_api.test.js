@@ -7,57 +7,73 @@ const Blog = require('../models/blog')
 const api = supertest(app)
 
 beforeEach(async () => {
-    await Blog.deleteMany({})
-    await Blog.insertMany(helper.initialBlogs)
-  })
+  await Blog.deleteMany({})
+  await Blog.insertMany(helper.initialBlogs)
+})
 
-
-test('blogs are returned as json', async() => {
-    await api
+test('blogs are returned as json', async () => {
+  await api
     .get('/api/blogs')
     .expect(200)
     .expect('Content-Type', /application\/json/)
-
 }, 100000)
 
-test('All blogs are returned', async() => {
-    const response = await api.get('/api/blogs')
+test('All blogs are returned', async () => {
+  const response = await api.get('/api/blogs')
 
-    expect(response.body).toHaveLength(helper.initialBlogs.length)
+  expect(response.body).toHaveLength(helper.initialBlogs.length)
 })
 
+test('verify unique blog id', async () => {
+  const response = await api.get('/api/blogs')
 
-test('verify unique blog id', async() => {
-    const response = await api.get('/api/blogs')
-    
-    const blogToView = response.body[0]
+  const blogToView = response.body[0]
 
-    expect(blogToView.id).toBeDefined()
+  expect(blogToView.id).toBeDefined()
 })
 
 test('a blog can be added to the bloglist', async () => {
-    const newBlog = {
-    title: "First class tests",
-    author: "Robert C. Martin",
-    url: "http://blog.cleancoder.com/uncle-bob/2017/05/05/TestDefinitions.htmll",
+  const newBlog = {
+    title: 'First class tests',
+    author: 'Robert C. Martin',
+    url: 'http://blog.cleancoder.com/uncle-bob/2017/05/05/TestDefinitions.htmll',
     likes: 10,
-    }
-  
-    await api
+  }
+
+  await api
     .post('/api/blogs')
     .send(newBlog)
     .expect(201)
     .expect('Content-Type', /application\/json/)
 
-    const blogsAtEnd = await helper.blogsInDB()
-    expect(blogsAtEnd).toHaveLength(helper.initialBlogs.length + 1)
+  const blogsAtEnd = await helper.blogsInDB()
+  expect(blogsAtEnd).toHaveLength(helper.initialBlogs.length + 1)
 
-    const author = blogsAtEnd.map(b => b.author)
+  const author = blogsAtEnd.map(b => b.author)
 
-    expect(author).toContain('Robert C. Martin')
+  expect(author).toContain('Robert C. Martin')
+})
 
+test('likes default to 0 if missing', async () => {
+  const blogNonExistingLikeProp = {
+    title: 'Type wars',
+    author: 'Robert C. Martin',
+    url: 'http://blog.cleancoder.com/uncle-bob/2016/05/01/TypeWars.html',
+  }
+
+  await api
+    .post('/api/blogs')
+    .send(blogNonExistingLikeProp)
+    .expect(201)
+    .expect('Content-Type', /application\/json/)
+
+  const blogResult = await helper.blogsInDB()
+
+  const LikeDefaultToZero = blogResult[blogResult.length - 1]
+
+  expect(LikeDefaultToZero.likes).toBe(0)
 })
 
 afterAll(() => {
-    mongoose.connection.close()
+  mongoose.connection.close()
 })
