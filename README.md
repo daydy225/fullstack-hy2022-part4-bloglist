@@ -53,3 +53,13 @@ Write a test that verifies that if the likes property is missing from the reques
 ## step 5
 
 Write a test related to creating new blogs via the /api/blogs endpoint, that verifies that if the title and url properties are missing from the request data, the backend responds to the request with the status code 400 Bad Request
+
+# Blog list Expansions
+
+## step 1
+
+Implement functionality for deleting a single blog post resource.
+
+## step 2
+
+Implement functionality for updating the information of an individual blog post
