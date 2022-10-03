@@ -63,3 +63,7 @@ Implement functionality for deleting a single blog post resource.
 ## step 2
 
 Implement functionality for updating the information of an individual blog post
+
+## step 3
+
+Implement a way to create new users.
