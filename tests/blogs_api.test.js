@@ -1,8 +1,11 @@
 const mongoose = require('mongoose')
 const supertest = require('supertest')
 const helper = require('../tests/test_helper')
+const bcrypt = require('bcrypt')
 const app = require('../app')
 const Blog = require('../models/blog')
+const User = require('../models/user')
+const user = require('../models/user')
 
 const api = supertest(app)
 
@@ -126,6 +129,60 @@ describe('update information of a blog', () => {
       .put(`/api/blog/${blogToUpdate.id}`)
       .send(updateBlog)
       .expect('Content-Type', /application\/json/)
+  })
+})
+
+describe('when there is initially user at db', () => {
+  beforeEach(async () => {
+    await User.deleteMany({})
+
+    passwordHash = await bcrypt.hash('sekret', 10)
+    const user = new User({ username: 'root', passwordHash })
+
+    await user.save()
+  })
+
+  test('creation succeed with a fresh username', async () => {
+    const userAtStart = await helper.usersInDB()
+
+    const newUser = {
+      username: 'Daydy225',
+      name: 'Daydy Belly',
+      password: 'Belly2005',
+    }
+
+    await api
+      .post('/api/users')
+      .send(newUser)
+      .expect(201)
+      .expect('Content-Type', /application\/json/)
+
+    const userAtEnd = await helper.usersInDB()
+    expect(userAtEnd).toHaveLength(userAtStart.length + 1)
+
+    const usernames = userAtEnd.map(u => u.username)
+    expect(usernames).toContain(newUser.username)
+  })
+
+  test('creation fails with proper statuscode and message if username already taken', async () => {
+    const userAtStart = await helper.usersInDB()
+
+    const newUser = {
+      username: 'root',
+      name: 'Superuser',
+      password: 'daydy',
+    }
+
+    const result = await api
+      .post('/api/users')
+      .send(newUser)
+      .expect(400)
+      .expect('Content-Type', /application\/json/)
+
+    expect(result.body.error).toContain('username must be unique')
+
+    const userAtEnd = await helper.usersInDB()
+    expect(userAtEnd).toHaveLength(userAtStart.length)
   })
 })
 

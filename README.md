@@ -67,3 +67,6 @@ Implement functionality for updating the information of an individual blog post
 ## step 3
 
 Implement a way to create new users.
+## step 4
+
+Add a feature which adds the following restrictions to creating new users: Both username and password must be given. Both username and password must be at least 3 characters long. The username must be unique
