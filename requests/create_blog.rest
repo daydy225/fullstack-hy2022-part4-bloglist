@@ -1,0 +1,10 @@
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+
+{
+    "title": "NBA",
+    "author": "Harry Mack",
+    "url": "www.nba.us",
+    "userId": "63302ba4a491bdf0e11b5959",
+    "likes": 5
+}

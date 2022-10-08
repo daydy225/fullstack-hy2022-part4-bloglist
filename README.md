@@ -70,3 +70,6 @@ Implement a way to create new users.
 ## step 4
 
 Add a feature which adds the following restrictions to creating new users: Both username and password must be given. Both username and password must be at least 3 characters long. The username must be unique
+## step 5
+
+Expand blogs so that each blog contains information on the creator of the blog
