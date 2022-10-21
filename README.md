@@ -77,3 +77,7 @@ Expand blogs so that each blog contains information on the creator of the blog
 ## step 6
 
 Implement token-based authentication according to part 4 chapter Token authentication.
+
+## step 7
+
+Modify adding new blogs so that it is only possible if a valid token is sent with the HTTP POST request.

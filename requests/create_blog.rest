@@ -1,5 +1,6 @@
 POST http://localhost:3003/api/blogs
 Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRhdmlkMjI1IiwiaWQiOiI2MzUyODU2YzY4Y2M4MjNmNWZiZGE0YmIiLCJpYXQiOjE2NjYzNTg2NjZ9.FLFEBlrV8t4--qsZJLVBizDlir_AGK1HJ6ZqwOO0ZkY
 
 {
     "title": "NBA",
