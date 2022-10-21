@@ -73,3 +73,7 @@ Add a feature which adds the following restrictions to creating new users: Both 
 ## step 5
 
 Expand blogs so that each blog contains information on the creator of the blog
+
+## step 6
+
+Implement token-based authentication according to part 4 chapter Token authentication.
