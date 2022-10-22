@@ -81,3 +81,7 @@ Implement token-based authentication according to part 4 chapter Token authentic
 ## step 7
 
 Modify adding new blogs so that it is only possible if a valid token is sent with the HTTP POST request.
+
+## step 8
+
+Refactoring tokenExtractor taking the token to middleware

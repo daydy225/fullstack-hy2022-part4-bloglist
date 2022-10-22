@@ -1,11 +1,11 @@
 POST http://localhost:3003/api/blogs
 Content-Type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRhdmlkMjI1IiwiaWQiOiI2MzUyODU2YzY4Y2M4MjNmNWZiZGE0YmIiLCJpYXQiOjE2NjYzNTg2NjZ9.FLFEBlrV8t4--qsZJLVBizDlir_AGK1HJ6ZqwOO0ZkY
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRhYmVseTIyNSIsImlkIjoiNjM1MmI5NmQ5NTU3M2U4NjM1OTgxYzhlIiwiaWF0IjoxNjY2NDM5ODczfQ.xD9vrtSRJzaqDYMU-XjMbsMkBJaW8RFTamjjtdKZAGM
 
 {
-    "title": "NBA",
-    "author": "Harry Mack",
-    "url": "www.nba.us",
-    "userId": "63302ba4a491bdf0e11b5959",
-    "likes": 5
+    "title": "DEV BLOG",
+    "author": "Daydy Dev",
+    "url": "www.dev.blog",
+    "userId": "6352b96d95573e8635981c8e",
+    "likes": 8
 }
