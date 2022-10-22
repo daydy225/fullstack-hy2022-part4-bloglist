@@ -85,3 +85,7 @@ Modify adding new blogs so that it is only possible if a valid token is sent wit
 ## step 8
 
 Refactoring tokenExtractor taking the token to middleware
+
+## step 9
+
+Change the delete blog operation so that a blog can be deleted only by the user who added the blog
