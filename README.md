@@ -89,3 +89,7 @@ Refactoring tokenExtractor taking the token to middleware
 ## step 9
 
 Change the delete blog operation so that a blog can be deleted only by the user who added the blog
+
+## step 10
+
+Creation of a new middleware userExtractor, that finds out the user and sets it to the request object

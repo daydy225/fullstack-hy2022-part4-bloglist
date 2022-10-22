@@ -1,11 +1,11 @@
 POST http://localhost:3003/api/blogs
 Content-Type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRhYmVseTIyNSIsImlkIjoiNjM1MmI5NmQ5NTU3M2U4NjM1OTgxYzhlIiwiaWF0IjoxNjY2NDM5ODczfQ.xD9vrtSRJzaqDYMU-XjMbsMkBJaW8RFTamjjtdKZAGM
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRhdmlkMjI1IiwiaWQiOiI2MzUyODU2YzY4Y2M4MjNmNWZiZGE0YmIiLCJpYXQiOjE2NjY0NDU5MTh9.Iuz4rlHkz45_zfXVYeHFeN6CAiDCxPogj_BJPyR9hXI
 
 {
-    "title": "DEV BLOG",
+    "title": "DEV BLOG3",
     "author": "Daydy Dev",
     "url": "www.dev.blog",
-    "userId": "6352b96d95573e8635981c8e",
+    "userId": "6352856c68cc823f5fbda4bb",
     "likes": 8
 }
